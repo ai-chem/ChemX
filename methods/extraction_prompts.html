@@ -1,0 +1,3603 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ai-chem.github.io/ChemX/methods/extraction_prompts.html">
+      
+      
+        <link rel="prev" href="data_extraction.html">
+      
+      
+        <link rel="next" href="data_validation.html">
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+    
+    
+      
+        <title>Extraction Prompts - ChemX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#extraction-prompts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="ChemX" class="md-header__button md-logo" aria-label="ChemX" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ChemX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Extraction Prompts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ai-chem/ChemX/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="ChemX" class="md-nav__button md-logo" aria-label="ChemX" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    ChemX
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ai-chem/ChemX/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/project_motivation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Motivation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/datasets_description.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Datasets description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Methods
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="approach.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Approach
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_extraction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data extraction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Extraction Prompts
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="extraction_prompts.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Extraction Prompts
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-prompts-by-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset Prompts by Category
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benzimidazole-antibiotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benzimidazole Antibiotics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oxazolidinone-antibiotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oxazolidinone Antibiotics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cocrystals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cocrystals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexes-ga" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexes - Ga
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexes-gd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexes - Gd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexes-tc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexes - Tc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexes-lu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexes - Lu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nanozymes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nanozymes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nanomag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nanomag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synergy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synergy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seltox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seltox
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cytotox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cytotox
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_validation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data validation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="benchmarking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Benchmarking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Datasets
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Datasets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nanomaterials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Nanomaterials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/dataset_1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cytotox
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/dataset_2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SelTox
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/dataset_3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Synergy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/dataset_4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nanozymes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/dataset_11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nanomag
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Small Molecules
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Small Molecules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/dataset_5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Benzimidazoles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/dataset_6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Oxazolidinones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/dataset_7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Complexes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/dataset_8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eye Drops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/dataset_9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Co-crystals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/team.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Team
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/license.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-prompts-by-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset Prompts by Category
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benzimidazole-antibiotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benzimidazole Antibiotics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oxazolidinone-antibiotics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oxazolidinone Antibiotics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cocrystals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cocrystals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexes-ga" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexes - Ga
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexes-gd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexes - Gd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexes-tc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexes - Tc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexes-lu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexes - Lu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nanozymes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nanozymes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nanomag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nanomag
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synergy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synergy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seltox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seltox
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cytotox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cytotox
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/ai-chem/ChemX/blob/main/docs/methods/extraction_prompts.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="extraction-prompts">Extraction Prompts<a class="headerlink" href="#extraction-prompts" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This page contains the standardized extraction prompts used to build the ChemX benchmark datasets. Each prompt is tailored to extract a specific type of chemical or biomedical information from scientific literature, ensuring <strong>semantic consistency</strong>, <strong>structured formatting</strong>, and <strong>high-quality validation</strong>.</p>
+<p>All prompts follow the same structure:</p>
+<ul>
+<li><strong>System Message</strong> – Defines the assistant’s role and domain knowledge.</li>
+<li><strong>Extraction Protocol</strong> – Provides detailed instructions on what to extract, how to handle edge cases, and how to deal with missing or ambiguous information.</li>
+<li><strong>Required Fields</strong> – Lists all expected fields with data types and example values.</li>
+<li><strong>Extraction Rules</strong> – Custom constraints and logic relevant to each domain.</li>
+<li><strong>Output Format</strong> – JSON array format illustrating the expected data structure.</li>
+</ul>
+<p>These prompts are used with <strong>large language models (LLMs)</strong> for <strong>automated extraction of structured data</strong> from scientific documents. All extracted data is further subjected to <strong>manual validation and expert review</strong>.</p>
+<hr />
+<h2 id="dataset-prompts-by-category">Dataset Prompts by Category<a class="headerlink" href="#dataset-prompts-by-category" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Click on any dataset name to jump to its corresponding prompt.</p>
+</blockquote>
+<h3 id="nanomaterials">Nanomaterials:<a class="headerlink" href="#nanomaterials" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#cytotox">Cytotox</a></li>
+<li><a href="#seltox">SelTox</a></li>
+<li><a href="#synergy">Synergy</a></li>
+<li><a href="#nanozymes">Nanozymes</a></li>
+<li><a href="#nanomag">Nanomag</a></li>
+</ul>
+<h3 id="small-molecules">Small Molecules:<a class="headerlink" href="#small-molecules" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#benzimidazole-antibiotics">Benzimidazoles</a></li>
+<li><a href="#oxazolidinone-antibiotics">Oxazolidinones</a></li>
+<li><a href="#cocrystals">Co-crystals</a></li>
+</ul>
+<h3 id="metal-complexes">Metal Complexes:<a class="headerlink" href="#metal-complexes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#complexes-ga">Chelate Complexes – Ga</a></li>
+<li><a href="#complexes-gd">Chelate Complexes – Gd</a></li>
+<li><a href="#complexes-tc">Chelate Complexes – Tc</a></li>
+<li><a href="#complexes-lu">Chelate Complexes – Lu</a></li>
+</ul>
+<hr />
+<h3 id="looking-for-the-actual-datasets">Looking for the actual datasets?<a class="headerlink" href="#looking-for-the-actual-datasets" title="Permanent link">&para;</a></h3>
+<p>See the full descriptions on the <a href="../overview/datasets_description.html">Datasets Overview</a> page.</p>
+<hr />
+<h2 id="benzimidazole-antibiotics">Benzimidazole Antibiotics<a class="headerlink" href="#benzimidazole-antibiotics" title="Permanent link">&para;</a></h2>
+<h3 id="system-message">System Message<a class="headerlink" href="#system-message" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in chemistry of small molecules. In particular, your area is antibiotics and their properties.&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol">Extraction Protocol<a class="headerlink" href="#extraction-protocol" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract <strong>every</strong> mention of MIC or pMIC measurements against Staphylococcus aureus and Escherichia coli bacteria for <strong>ALL</strong> benzimidazole antibiotics from a scientific article and output a <strong>JSON array</strong> of objects <strong>only</strong> (no markdown, no commentary, no extra text).</p>
+<h4 id="required-fields">Required Fields<a class="headerlink" href="#required-fields" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compound_id</code></td>
+<td>string</td>
+<td>ID of a molecule within the article, as cited in the text</td>
+<td><code>"5a"</code>, <code>"Compound 3"</code></td>
+</tr>
+<tr>
+<td><code>smiles</code></td>
+<td>string</td>
+<td>Full SMILES representation of a benzimidazole antibiotic</td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_type</code></td>
+<td>string</td>
+<td>Type of measurement, either <code>"MIC"</code> or <code>"pMIC"</code>, exactly as stated</td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_relation</code></td>
+<td>string</td>
+<td>One of <code>"="</code>, <code>"&lt;"</code>, or <code>"&gt;"</code>. If no relation symbol is shown, use <code>"="</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_value</code></td>
+<td>number</td>
+<td>The numeric value of MIC/pMIC (without quotes)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_units</code></td>
+<td>string</td>
+<td>MIC units</td>
+<td><code>"μg/mL"</code>, <code>"mg/L"</code></td>
+</tr>
+<tr>
+<td><code>bacteria</code></td>
+<td>string</td>
+<td>The organism against which MIC/pMIC was measured, named exactly as in the text</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="extraction-rules">Extraction Rules<a class="headerlink" href="#extraction-rules" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Extract <strong>each</strong> MIC/pMIC mention as a separate object. If multiple MIC/pMIC are reported for the same compound against different bacteria, list them as separate entries.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate. Include repeated mentions and duplicates if they occur in different contexts.</p>
+</li>
+<li>
+<p>If a range is given (e.g., "2–8 μg/mL"), leave it as a range.</p>
+</li>
+<li>
+<p>If a molecule is fully depicted in a figure, write it as a SMILES string. If a molecule is depicted as a scaffold and residues separately in different places of an article, connect them by compound ID into one molecule and write it as a single SMILES string.</p>
+</li>
+<li>
+<p>Extract only measurements with Staphylococcus aureus and Escherichia coli. Record full names, abbreviations, or any related taxonomic identifiers of bacteria.</p>
+</li>
+<li>
+<p>If you cannot find a required field for an object, re-check the context; if it's still absent, set that field's value to <code>"NOT_DETECTED"</code>.</p>
+</li>
+<li>
+<p>The example output shows only two extracted samples, however your output should contain <strong>all</strong> MIC or pMIC measurements of benzimidazole antibiotics present in the article.</p>
+</li>
+</ol>
+<h3 id="output-format">Output Format<a class="headerlink" href="#output-format" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;11h&quot;</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">&quot;smiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O=C(OCC)C1=C(N(C(=O)N(C1C2=C(C=CS2)C)[H])[H])C[N]3C=NC4=C3C=C(C=C4)[N+](=O)[O-]&quot;</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">&quot;target_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIC&quot;</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">&quot;target_relation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">&quot;target_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">&quot;target_units&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mmol/l&quot;</span><span class="p">,</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nt">&quot;bacteria&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;methicillin-susceptible S. aureus&quot;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5a&quot;</span><span class="p">,</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="nt">&quot;smiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CCN1C=C(C(=O)C2=CC(=C(C=C21)N3CCN(CC3)C4=NC=CC(=N4)N)F)C(=O)O&quot;</span><span class="p">,</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="nt">&quot;target_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pMIC&quot;</span><span class="p">,</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="nt">&quot;target_relation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="nt">&quot;target_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="nt">&quot;target_units&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;μg/mL&quot;</span><span class="p">,</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="nt">&quot;bacteria&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Escherichia coli&quot;</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="oxazolidinone-antibiotics">Oxazolidinone Antibiotics<a class="headerlink" href="#oxazolidinone-antibiotics" title="Permanent link">&para;</a></h2>
+<h3 id="system-message_1">System Message<a class="headerlink" href="#system-message_1" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in chemistry of small molecules. In particular, your area is antibiotics and their properties.&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol_1">Extraction Protocol<a class="headerlink" href="#extraction-protocol_1" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract <strong>every</strong> mention of MIC or pMIC values for oxazolidinone antibiotics from a scientific article and output a <strong>JSON array</strong> of objects <strong>only</strong> (no markdown, no commentary, no extra text).</p>
+<h4 id="required-fields_1">Required Fields<a class="headerlink" href="#required-fields_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compound_id</code></td>
+<td>string</td>
+<td>ID of a molecule within the article, as cited in the text</td>
+<td><code>"5a"</code>, <code>"Compound 3"</code></td>
+</tr>
+<tr>
+<td><code>smiles</code></td>
+<td>string</td>
+<td>Full SMILES representation of an oxazolidinone antibiotic</td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_type</code></td>
+<td>string</td>
+<td>Type of measurement, either <code>"MIC"</code> or <code>"pMIC"</code>, exactly as stated</td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_relation</code></td>
+<td>string</td>
+<td>One of <code>"="</code>, <code>"&lt;"</code>, or <code>"&gt;"</code>. If no relation symbol is shown, use <code>"="</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_value</code></td>
+<td>number</td>
+<td>The numeric value of MIC/pMIC (without quotes)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_units</code></td>
+<td>string</td>
+<td>MIC units</td>
+<td><code>"μg/mL"</code>, <code>"mg/L"</code></td>
+</tr>
+<tr>
+<td><code>bacteria</code></td>
+<td>string</td>
+<td>The organism against which MIC/pMIC was measured, named exactly as in the text. Record full names, abbreviations, or any related taxonomic identifiers of bacteria.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="extraction-rules_1">Extraction Rules<a class="headerlink" href="#extraction-rules_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Extract <strong>each</strong> MIC or pMIC mention as a separate object.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate. Include repeated mentions and duplicates if they occur in different contexts.</p>
+</li>
+<li>
+<p>If a range is given (e.g., "2–8 μg/mL"), leave it as a range.</p>
+</li>
+<li>
+<p>If a molecule is fully depicted in a figure, write it as a SMILES string. If a molecule is depicted as a scaffold and residues separately in different places of an article, connect them by compound ID into one molecule and write it as a single SMILES string.</p>
+</li>
+<li>
+<p>If multiple measurement types appear for the same compound and bacterium (e.g., MIC₅₀, MIC₉₀), extract each separately.</p>
+</li>
+<li>
+<p>If you cannot find a required field for an object, re-check the context; if it's still absent, set that field's value to <code>"NOT_DETECTED"</code>.</p>
+</li>
+<li>
+<p>The example output shows only two extracted samples, however your output should contain <strong>all</strong> MIC or pMIC measurements of oxazolidinone antibiotics present in the article.</p>
+</li>
+</ol>
+<h3 id="output-format_1">Output Format<a class="headerlink" href="#output-format_1" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">[</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12b&quot;</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">&quot;smiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CC1=CC=C(C=C1)C(=O)Nc2ccc(cc2)C(=O)N3CCCCC3=O&quot;</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">&quot;target_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIC&quot;</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">&quot;target_relation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nt">&quot;target_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nt">&quot;target_units&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mmol/l&quot;</span><span class="p">,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nt">&quot;bacteria&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;methicillin-susceptible S. aureus&quot;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5a&quot;</span><span class="p">,</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nt">&quot;smiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CC1=CC=CC=C1N2C=NC3=CC=CC=C23&quot;</span><span class="p">,</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="nt">&quot;target_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIC&quot;</span><span class="p">,</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="nt">&quot;target_relation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;=&quot;</span><span class="p">,</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="nt">&quot;target_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="nt">&quot;target_units&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;μg/mL&quot;</span><span class="p">,</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="nt">&quot;bacteria&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Escherichia coli&quot;</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="cocrystals">Cocrystals<a class="headerlink" href="#cocrystals" title="Permanent link">&para;</a></h2>
+<h3 id="system-message_2">System Message<a class="headerlink" href="#system-message_2" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in the chemistry of cocrystals and their properties. Your area of expertise includes analyzing cocrystals, their components, and photostability changes.&quot;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol_2">Extraction Protocol<a class="headerlink" href="#extraction-protocol_2" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract <strong>every</strong> mention of photostability for co-crystals from a scientific article, and output a <strong>JSON array</strong> of objects <strong>only</strong> (no markdown, no commentary, no extra text).</p>
+<h4 id="required-fields_2">Required Fields<a class="headerlink" href="#required-fields_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name_cocrystal</code></td>
+<td>string</td>
+<td>Name of cocrystal, as cited in the text</td>
+<td><code>"CAR-HCT"</code>, <code>"DMZ-SAC"</code></td>
+</tr>
+<tr>
+<td><code>ratio_cocrystal</code></td>
+<td>string</td>
+<td>Molar ratio of the cocrystal components</td>
+<td><code>"2:1"</code>, <code>"0.5:1"</code></td>
+</tr>
+<tr>
+<td><code>name_drug</code></td>
+<td>string</td>
+<td>Name of the drug in the cocrystal as cited in the text</td>
+<td><code>"Carvedilol"</code>, <code>"Epalrestat"</code></td>
+</tr>
+<tr>
+<td><code>SMILES_drug</code></td>
+<td>string</td>
+<td>Full SMILES representation of drug</td>
+<td></td>
+</tr>
+<tr>
+<td><code>name_coformer</code></td>
+<td>string</td>
+<td>Name of the coformer in the cocrystal as cited in the text</td>
+<td><code>"Saccharin"</code>, <code>"Oxalic acid"</code></td>
+</tr>
+<tr>
+<td><code>SMILES_coformer</code></td>
+<td>string</td>
+<td>Full SMILES representation of coformer</td>
+<td></td>
+</tr>
+<tr>
+<td><code>photostability_change</code></td>
+<td>string</td>
+<td>One of <code>"decrease"</code>, <code>"does not change"</code>, or <code>"increase"</code>. Trend of photostability for both the cocrystal and the drug</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="extraction-rules_2">Extraction Rules<a class="headerlink" href="#extraction-rules_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Extract <strong>each</strong> photostability mention as a separate object.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate. Include repeated mentions and duplicates if they occur in different contexts.</p>
+</li>
+<li>
+<p>If multiple polymorphic forms (e.g., CBZ-SAC Form I, CBZ-SAC Form II) appear for the same drug and coformer in the same ratio, extract each separately.</p>
+</li>
+<li>
+<p>If you cannot find a required field for an object, re-check the context; if it's still absent, set that field's value to <code>"NOT_DETECTED"</code>.</p>
+</li>
+<li>
+<p>The example output shows only two extracted samples, however your output should contain <strong>all</strong> mentions of photostability for co-crystals present in the article.</p>
+</li>
+</ol>
+<h3 id="output-format_2">Output Format<a class="headerlink" href="#output-format_2" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">[</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">&quot;name_cocrystal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CAR-HCT&quot;</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">&quot;ratio_cocrystal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2:1&quot;</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">&quot;name_drug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Carvedilol&quot;</span><span class="p">,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nt">&quot;SMILES_drug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C1=CC(=C(C=C1O)O)C=CC2=CC(=CC(=C2)O)O&quot;</span><span class="p">,</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nt">&quot;name_coformer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Saccharin&quot;</span><span class="p">,</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">&quot;SMILES_coformer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O=C(O)CC(O)C(=O)O&quot;</span><span class="p">,</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="nt">&quot;photostability_change&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;decrease&quot;</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nt">&quot;name_cocrystal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DMZ-SAC&quot;</span><span class="p">,</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nt">&quot;ratio_cocrystal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.5:1&quot;</span><span class="p">,</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nt">&quot;name_drug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Epalrestat&quot;</span><span class="p">,</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="nt">&quot;SMILES_drug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C1=CC(=C(C=C1O)O)C=CC2=CC(=CC(=C2)O)O&quot;</span><span class="p">,</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="nt">&quot;name_coformer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Oxalic acid&quot;</span><span class="p">,</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="nt">&quot;SMILES_coformer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C(=C/C(=O)O)\\C(=O)O&quot;</span><span class="p">,</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="nt">&quot;photostability_change&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;does not change&quot;</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="complexes-ga">Complexes - Ga<a class="headerlink" href="#complexes-ga" title="Permanent link">&para;</a></h2>
+<h3 id="system-message_3">System Message<a class="headerlink" href="#system-message_3" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in the chemistry of organometallic complexes and their properties.&quot;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol_3">Extraction Protocol<a class="headerlink" href="#extraction-protocol_3" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract <strong>every</strong> mention of organometallic complexes and chelate ligands from scientific article, and output a <strong>JSON array</strong> of objects <strong>only</strong> (no markdown, no commentary, no extra text).</p>
+<h4 id="required-fields_3">Required Fields<a class="headerlink" href="#required-fields_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compound_id</code></td>
+<td>string</td>
+<td>ID of a complex within the article, as cited in the text</td>
+<td><code>"L3"</code>, <code>"A31"</code></td>
+</tr>
+<tr>
+<td><code>compound_name</code></td>
+<td>string</td>
+<td>Abbreviated or full name of the complex or ligand as cited in the text</td>
+<td><code>"DOTA"</code>, <code>"tebroxime"</code></td>
+</tr>
+<tr>
+<td><code>SMILES</code></td>
+<td>string</td>
+<td>Full SMILES representation of ligand environment or single ligand.<br>— If a complete organometallic complex is shown, extract all ligand structures <strong>without mentioning the metal</strong>.<br>— If only a chelate ligand is shown, extract <strong>only its structure</strong>.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SMILES_type</code></td>
+<td>string</td>
+<td>One of <code>"ligand"</code> or <code>"environment"</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_value</code></td>
+<td>number</td>
+<td>The numeric value of logarithms of thermodynamic stability constants lgK or logK</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on SMILES format:</strong>
+- If a complete organometallic complex is shown, extract all ligand structures without mentioning the metal
+- For a chelate ligand without a complete organometallic complex, extract only that ligand's structure</p>
+<h4 id="extraction-rules_3">Extraction Rules<a class="headerlink" href="#extraction-rules_3" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Extract <strong>each</strong> mention of <code>target_value</code> (lgK or logK) as a separate object.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate. Include repeated mentions and duplicates if they occur in different contexts.</p>
+</li>
+<li>
+<p>If a molecule is fully depicted in a figure, write it as a SMILES string. If a molecule is depicted as a scaffold and residues separately in different places of an article, connect them by compound ID or name into one molecule and write it a single SMILES string.</p>
+</li>
+<li>
+<p>If multiple thermodynamic stability constants appear for the same complex or ligand extract each separately.</p>
+</li>
+<li>
+<p>Extract only structures that comply with these rules:
+   5.1. The complexes must contain <strong>Ga</strong> as the metal or the ligands must belong to complexes of that metal.
+   5.2. The complete molecular structure shall be given without errors in it or identifiers.
+   5.3. Compounds must contain more than one carbon (exclude CO, Me).
+   5.4. Compounds must not contain polymeric structures, attached biomolecules or carboranes, undefined radicals, undeciphered designations (e.g., amino acids) beyond the simplest abbreviations (i.e., Me, Et, Pr, Bu, Ph, Ac), names of radicals instead of their structure, or incomplete indication of the ligand structure (e.g., L = P, N).
+   5.5. Compounds must not be reaction intermediate or precursor.</p>
+</li>
+<li>
+<p>If you cannot find a required field for an object, re-check the context; if it's still absent, set that field's value to <code>"NOT_DETECTED"</code>.</p>
+</li>
+<li>
+<p>The example output shows only two extracted samples, however your output should contain <strong>all</strong> mentions of organometallic complexes and/or chelate ligands present in the article.</p>
+</li>
+</ol>
+<h3 id="output-format_3">Output Format<a class="headerlink" href="#output-format_3" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">[</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;L3&quot;</span><span class="p">,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="nt">&quot;compound_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DOTA&quot;</span><span class="p">,</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="nt">&quot;SMILES&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O=C(O)CN(CCN(CC(=O)O)CC(=O)O)CC(=O)O&quot;</span><span class="p">,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="nt">&quot;SMILES_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ligand&quot;</span><span class="p">,</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">21.3</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A31&quot;</span><span class="p">,</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="nt">&quot;compound_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tebroxime&quot;</span><span class="p">,</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="nt">&quot;SMILES&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC&quot;</span><span class="p">,</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span><span class="nt">&quot;SMILES_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;environment&quot;</span><span class="p">,</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">17.9</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="complexes-gd">Complexes - Gd<a class="headerlink" href="#complexes-gd" title="Permanent link">&para;</a></h2>
+<h3 id="system-message_4">System Message<a class="headerlink" href="#system-message_4" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in the chemistry of organometallic complexes and their properties.&quot;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol_4">Extraction Protocol<a class="headerlink" href="#extraction-protocol_4" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract <strong>every</strong> mention of organometallic complexes and chelate ligands from scientific article, and output a <strong>JSON array</strong> of objects <strong>only</strong> (no markdown, no commentary, no extra text).</p>
+<h4 id="required-fields_4">Required Fields<a class="headerlink" href="#required-fields_4" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compound_id</code></td>
+<td>string</td>
+<td>ID of a complex within the article, as cited in the text</td>
+<td><code>"L3"</code>, <code>"A31"</code></td>
+</tr>
+<tr>
+<td><code>compound_name</code></td>
+<td>string</td>
+<td>Abbreviated or full name of the complex or ligand as cited in the text</td>
+<td><code>"DOTA"</code>, <code>"tebroxime"</code></td>
+</tr>
+<tr>
+<td><code>SMILES</code></td>
+<td>string</td>
+<td>Full SMILES representation of ligand environment or single ligand</td>
+<td>See note below</td>
+</tr>
+<tr>
+<td><code>SMILES_type</code></td>
+<td>string</td>
+<td>One of <code>"ligand"</code> or <code>"environment"</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_value</code></td>
+<td>number</td>
+<td>The numeric value of logarithms of thermodynamic stability constants lgK or logK</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on SMILES format:</strong>
+- If a complete organometallic complex is shown, extract all ligand structures without mentioning the metal (e.g., "COc1cc(C=CC([O-])CC([O-])CC([O-])C=Cc2ccc(O)c(OC)c2)ccc1O. [C-]#[O+].[C-]#[O+].[C-]#[O+].[OH-]")
+- For a chelate ligand without a complete organometallic complex, extract only that ligand's structure (e.g., 'O=C(O)CN(CCN(CC(CC(=O)O)CC(=O)O)CCN(CC(=O)O)CC(=O)O')</p>
+<h4 id="extraction-rules_4">Extraction Rules<a class="headerlink" href="#extraction-rules_4" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Extract <strong>each</strong> mention of <code>target_value</code> (lgK or logK) as a separate object.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate. Include repeated mentions and duplicates if they occur in different contexts.</p>
+</li>
+<li>
+<p>If a molecule is fully depicted in a figure, write it as a SMILES string. If a molecule is depicted as a scaffold and residues separately in different places of an article, connect them by compound ID or name into one molecule and write it a single SMILES string.</p>
+</li>
+<li>
+<p>If multiple thermodynamic stability constants appear for the same complex or ligand extract each separately.</p>
+</li>
+<li>
+<p>Extract only structures that comply with these rules:
+   5.1. The complexes must contain <strong>Gd</strong> as the metal or the ligands must belong to complexes of that metal.
+   5.2. The complete molecular structure shall be given without errors in it or identifiers.
+   5.3. Compounds must contain more than one carbon (exclude CO, Me).
+   5.4. Compounds must not contain polymeric structures, attached biomolecules or carboranes, undefined radicals, undeciphered designations (e.g., amino acids) beyond the simplest abbreviations (i.e., Me, Et, Pr, Bu, Ph, Ac), names of radicals instead of their structure, or incomplete indication of the ligand structure (e.g., L = P, N).
+   5.5. Compounds must not be reaction intermediate or precursor.</p>
+</li>
+<li>
+<p>If you cannot find a required field for an object, re-check the context; if it's still absent, set that field's value to <code>"NOT_DETECTED"</code>.</p>
+</li>
+<li>
+<p>The example output shows only two extracted samples, however your output should contain <strong>all</strong> mentions of organometallic complexes and/or chelate ligands present in the article.</p>
+</li>
+</ol>
+<h3 id="output-format_4">Output Format<a class="headerlink" href="#output-format_4" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">[</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">        </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;L3&quot;</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="nt">&quot;compound_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DOTA&quot;</span><span class="p">,</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="nt">&quot;SMILES&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O=C(O)CN(CCN(CC(=O)O)CC(=O)O)CC(=O)O&quot;</span><span class="p">,</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="nt">&quot;SMILES_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ligand&quot;</span><span class="p">,</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">21.3</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A31&quot;</span><span class="p">,</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="nt">&quot;compound_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tebroxime&quot;</span><span class="p">,</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="nt">&quot;SMILES&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC&quot;</span><span class="p">,</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="nt">&quot;SMILES_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;environment&quot;</span><span class="p">,</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">17.9</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="complexes-tc">Complexes - Tc<a class="headerlink" href="#complexes-tc" title="Permanent link">&para;</a></h2>
+<h3 id="system-message_5">System Message<a class="headerlink" href="#system-message_5" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in the chemistry of organometallic complexes and their properties.&quot;</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol_5">Extraction Protocol<a class="headerlink" href="#extraction-protocol_5" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract <strong>every</strong> mention of organometallic complexes and chelate ligands from scientific article, and output a <strong>JSON array</strong> of objects <strong>only</strong> (no markdown, no commentary, no extra text).</p>
+<h4 id="required-fields_5">Required Fields<a class="headerlink" href="#required-fields_5" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compound_id</code></td>
+<td>string</td>
+<td>ID of a complex within the article, as cited in the text</td>
+<td><code>"L3"</code>, <code>"A31"</code></td>
+</tr>
+<tr>
+<td><code>compound_name</code></td>
+<td>string</td>
+<td>Abbreviated or full name of the complex or ligand as cited in the text</td>
+<td><code>"DOTA"</code>, <code>"tebroxime"</code></td>
+</tr>
+<tr>
+<td><code>SMILES</code></td>
+<td>string</td>
+<td>Full SMILES representation of ligand environment or single ligand</td>
+<td>See note below</td>
+</tr>
+<tr>
+<td><code>SMILES_type</code></td>
+<td>string</td>
+<td>One of <code>"ligand"</code> or <code>"environment"</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_value</code></td>
+<td>number</td>
+<td>The numeric value of logarithms of thermodynamic stability constants lgK or logK</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on SMILES format:</strong>
+- If a complete organometallic complex is shown, extract all ligand structures without mentioning the metal (e.g., "COc1cc(C=CC([O-])CC([O-])CC([O-])C=Cc2ccc(O)c(OC)c2)ccc1O. [C-]#[O+].[C-]#[O+].[C-]#[O+].[OH-]")
+- For a chelate ligand without a complete organometallic complex, extract only that ligand's structure (e.g., 'O=C(O)CN(CCN(CC(CC(=O)O)CC(=O)O)CCN(CC(=O)O)CC(=O)O')</p>
+<h4 id="extraction-rules_5">Extraction Rules<a class="headerlink" href="#extraction-rules_5" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Extract <strong>each</strong> mention of <code>target_value</code> (lgK or logK) as a separate object.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate. Include repeated mentions and duplicates if they occur in different contexts.</p>
+</li>
+<li>
+<p>If a molecule is fully depicted in a figure, write it as a SMILES string. If a molecule is depicted as a scaffold and residues separately in different places of an article, connect them by compound ID or name into one molecule and write it a single SMILES string.</p>
+</li>
+<li>
+<p>If multiple thermodynamic stability constants appear for the same complex or ligand extract each separately.</p>
+</li>
+<li>
+<p>Extract only structures that comply with these rules:
+   5.1. The complexes must contain <strong>Tc</strong> as the metal or the ligands must belong to complexes of that metal.
+   5.2. The complete molecular structure shall be given without errors in it or identifiers.
+   5.3. Compounds must contain more than one carbon (exclude CO, Me).
+   5.4. Compounds must not contain polymeric structures, attached biomolecules or carboranes, undefined radicals, undeciphered designations (e.g., amino acids) beyond the simplest abbreviations (i.e., Me, Et, Pr, Bu, Ph, Ac), names of radicals instead of their structure, or incomplete indication of the ligand structure (e.g., L = P, N).
+   5.5. Compounds must not be reaction intermediate or precursor.</p>
+</li>
+<li>
+<p>If you cannot find a required field for an object, re-check the context; if it's still absent, set that field's value to <code>"NOT_DETECTED"</code>.</p>
+</li>
+<li>
+<p>The example output shows only two extracted samples, however your output should contain <strong>all</strong> mentions of organometallic complexes and/or chelate ligands present in the article.</p>
+</li>
+</ol>
+<h3 id="output-format_5">Output Format<a class="headerlink" href="#output-format_5" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">[</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">        </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;L3&quot;</span><span class="p">,</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">        </span><span class="nt">&quot;compound_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DOTA&quot;</span><span class="p">,</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">        </span><span class="nt">&quot;SMILES&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O=C(O)CN(CCN(CC(=O)O)CC(=O)O)CC(=O)O&quot;</span><span class="p">,</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">        </span><span class="nt">&quot;SMILES_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ligand&quot;</span><span class="p">,</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">        </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">21.3</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A31&quot;</span><span class="p">,</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">        </span><span class="nt">&quot;compound_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tebroxime&quot;</span><span class="p">,</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">        </span><span class="nt">&quot;SMILES&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC&quot;</span><span class="p">,</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">        </span><span class="nt">&quot;SMILES_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;environment&quot;</span><span class="p">,</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">        </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">17.9</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="complexes-lu">Complexes - Lu<a class="headerlink" href="#complexes-lu" title="Permanent link">&para;</a></h2>
+<h3 id="system-message_6">System Message<a class="headerlink" href="#system-message_6" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in the chemistry of organometallic complexes and their properties.&quot;</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol_6">Extraction Protocol<a class="headerlink" href="#extraction-protocol_6" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract <strong>every</strong> mention of organometallic complexes and chelate ligands from scientific article, and output a <strong>JSON array</strong> of objects <strong>only</strong> (no markdown, no commentary, no extra text).</p>
+<h4 id="required-fields_6">Required Fields<a class="headerlink" href="#required-fields_6" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compound_id</code></td>
+<td>string</td>
+<td>ID of a complex within the article, as cited in the text</td>
+<td><code>"L3"</code>, <code>"A31"</code></td>
+</tr>
+<tr>
+<td><code>compound_name</code></td>
+<td>string</td>
+<td>Abbreviated or full name of the complex or ligand as cited in the text</td>
+<td><code>"DOTA"</code>, <code>"tebroxime"</code></td>
+</tr>
+<tr>
+<td><code>SMILES</code></td>
+<td>string</td>
+<td>Full SMILES representation of ligand environment or single ligand</td>
+<td>See note below</td>
+</tr>
+<tr>
+<td><code>SMILES_type</code></td>
+<td>string</td>
+<td>One of <code>"ligand"</code> or <code>"environment"</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>target_value</code></td>
+<td>number</td>
+<td>The numeric value of logarithms of thermodynamic stability constants lgK or logK</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on SMILES format:</strong>
+- If a complete organometallic complex is shown, extract all ligand structures without mentioning the metal (e.g., "COc1cc(C=CC([O-])CC([O-])CC([O-])C=Cc2ccc(O)c(OC)c2)ccc1O. [C-]#[O+].[C-]#[O+].[C-]#[O+].[OH-]")
+- For a chelate ligand without a complete organometallic complex, extract only that ligand's structure (e.g., 'O=C(O)CN(CCN(CC(CC(=O)O)CC(=O)O)CCN(CC(=O)O)CC(=O)O')</p>
+<h4 id="extraction-rules_6">Extraction Rules<a class="headerlink" href="#extraction-rules_6" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Extract <strong>each</strong> mention of <code>target_value</code> (lgK or logK) as a separate object.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate. Include repeated mentions and duplicates if they occur in different contexts.</p>
+</li>
+<li>
+<p>If a molecule is fully depicted in a figure, write it as a SMILES string. If a molecule is depicted as a scaffold and residues separately in different places of an article, connect them by compound ID or name into one molecule and write it a single SMILES string.</p>
+</li>
+<li>
+<p>If multiple thermodynamic stability constants appear for the same complex or ligand extract each separately.</p>
+</li>
+<li>
+<p>Extract only structures that comply with these rules:
+   5.1. The complexes must contain <strong>Lu</strong> as the metal or the ligands must belong to complexes of that metal.
+   5.2. The complete molecular structure shall be given without errors in it or identifiers.
+   5.3. Compounds must contain more than one carbon (exclude CO, Me).
+   5.4. Compounds must not contain polymeric structures, attached biomolecules or carboranes, undefined radicals, undeciphered designations (e.g., amino acids) beyond the simplest abbreviations (i.e., Me, Et, Pr, Bu, Ph, Ac), names of radicals instead of their structure, or incomplete indication of the ligand structure (e.g., L = P, N).
+   5.5. Compounds must not be reaction intermediate or precursor.</p>
+</li>
+<li>
+<p>If you cannot find a required field for an object, re-check the context; if it's still absent, set that field's value to <code>"NOT_DETECTED"</code>.</p>
+</li>
+<li>
+<p>The example output shows only two extracted samples, however your output should contain <strong>all</strong> mentions of organometallic complexes and/or chelate ligands present in the article.</p>
+</li>
+</ol>
+<h3 id="output-format_6">Output Format<a class="headerlink" href="#output-format_6" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">[</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">        </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;L3&quot;</span><span class="p">,</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">        </span><span class="nt">&quot;compound_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DOTA&quot;</span><span class="p">,</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">        </span><span class="nt">&quot;SMILES&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O=C(O)CN(CCN(CC(=O)O)CC(=O)O)CC(=O)O&quot;</span><span class="p">,</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">        </span><span class="nt">&quot;SMILES_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ligand&quot;</span><span class="p">,</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">        </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">21.3</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">        </span><span class="nt">&quot;compound_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A31&quot;</span><span class="p">,</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">        </span><span class="nt">&quot;compound_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tebroxime&quot;</span><span class="p">,</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">        </span><span class="nt">&quot;SMILES&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC.[C-]#[N+]CC(C)(C)OC&quot;</span><span class="p">,</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">        </span><span class="nt">&quot;SMILES_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;environment&quot;</span><span class="p">,</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">        </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">17.9</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="nanozymes">Nanozymes<a class="headerlink" href="#nanozymes" title="Permanent link">&para;</a></h2>
+<h3 id="system-message_7">System Message<a class="headerlink" href="#system-message_7" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in nanozymes.&quot;</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol_7">Extraction Protocol<a class="headerlink" href="#extraction-protocol_7" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract <strong>every</strong> mention of experiments for <strong>ALL</strong> nanozymes from a scientific article and output a <strong>JSON array</strong> of objects <strong>only</strong> (no markdown, no commentary, no extra text).</p>
+<h4 id="required-fields_7">Required Fields<a class="headerlink" href="#required-fields_7" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>formula</code></td>
+<td>string</td>
+<td>Chemical formula of the nanozyme</td>
+<td>"Fe3O4", "CuO"</td>
+</tr>
+<tr>
+<td><code>activity</code></td>
+<td>string</td>
+<td>Catalytic activity type</td>
+<td>"peroxidase", "oxidase", "catalase", "laccase"</td>
+</tr>
+<tr>
+<td><code>syngony</code></td>
+<td>string</td>
+<td>Crystal unit of the nanozyme</td>
+<td>"cubic", "hexagonal", "tetragonal", "monoclinic", "orthorhombic", "trigonal", "amorphous", "triclinic"</td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td>number</td>
+<td>Length of nanozyme particle in nanometers</td>
+<td></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>number</td>
+<td>Width of nanozyme particle in nanometers</td>
+<td></td>
+</tr>
+<tr>
+<td><code>depth</code></td>
+<td>number</td>
+<td>Depth of nanozyme particle in nanometers</td>
+<td></td>
+</tr>
+<tr>
+<td><code>surface</code></td>
+<td>string</td>
+<td>Surface molecule</td>
+<td>"naked", "poly(ethylene oxide)"</td>
+</tr>
+<tr>
+<td><code>km_value</code></td>
+<td>number</td>
+<td>Michaelis constant value</td>
+<td></td>
+</tr>
+<tr>
+<td><code>km_unit</code></td>
+<td>string</td>
+<td>Unit for Michaelis constant</td>
+<td>"mM"</td>
+</tr>
+<tr>
+<td><code>vmax_value</code></td>
+<td>number</td>
+<td>Molar maximum reaction rate value</td>
+<td></td>
+</tr>
+<tr>
+<td><code>vmax_unit</code></td>
+<td>string</td>
+<td>Unit for maximum reaction rate</td>
+<td>"µmol/min", "mol/min"</td>
+</tr>
+<tr>
+<td><code>reaction_type</code></td>
+<td>string</td>
+<td>Reaction type with substrate and co-substrate</td>
+<td>"TMB + H2O2", "ABTS + H2O2"</td>
+</tr>
+<tr>
+<td><code>c_min</code></td>
+<td>number</td>
+<td>Minimum substrate concentration (mM)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>c_max</code></td>
+<td>number</td>
+<td>Maximum substrate concentration (mM)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>c_const</code></td>
+<td>number</td>
+<td>Constant co-substrate concentration</td>
+<td></td>
+</tr>
+<tr>
+<td><code>c_const_unit</code></td>
+<td>string</td>
+<td>Unit for co-substrate concentration</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ccat_value</code></td>
+<td>number</td>
+<td>Catalyst concentration in assays</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ccat_unit</code></td>
+<td>string</td>
+<td>Unit for catalyst concentration</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ph</code></td>
+<td>number</td>
+<td>pH level of experiments</td>
+<td></td>
+</tr>
+<tr>
+<td><code>temperature</code></td>
+<td>number</td>
+<td>Temperature in Celsius</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="extraction-rules_7">Extraction Rules<a class="headerlink" href="#extraction-rules_7" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Extract <strong>each</strong> nanozyme mention as a separate object.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate. Include repeated mentions and duplicates if they occur in different contexts.</p>
+</li>
+<li>
+<p>If you cannot find a required field for an object, re-check the context; if it's still absent, set that field's value to <code>"NOT_DETECTED"</code>.</p>
+</li>
+<li>
+<p>The example output shows only two extracted samples, however your output should contain <strong>all</strong> nanozymes present in the article.</p>
+</li>
+</ol>
+<h3 id="output-format_7">Output Format<a class="headerlink" href="#output-format_7" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">[</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="nt">&quot;formula&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fe3O4&quot;</span><span class="p">,</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="nt">&quot;activity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peroxidase&quot;</span><span class="p">,</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="nt">&quot;syngony&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cubic&quot;</span><span class="p">,</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="nt">&quot;length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">    </span><span class="nt">&quot;depth&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">    </span><span class="nt">&quot;surface&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;naked&quot;</span><span class="p">,</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">    </span><span class="nt">&quot;km_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">    </span><span class="nt">&quot;km_unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mM&quot;</span><span class="p">,</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">    </span><span class="nt">&quot;vmax_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">    </span><span class="nt">&quot;vmax_unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;µmol/min&quot;</span><span class="p">,</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">    </span><span class="nt">&quot;reaction_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TMB + H2O2&quot;</span><span class="p">,</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">    </span><span class="nt">&quot;c_min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">    </span><span class="nt">&quot;c_max&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">    </span><span class="nt">&quot;c_const&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">    </span><span class="nt">&quot;c_const_unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mM&quot;</span><span class="p">,</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">    </span><span class="nt">&quot;ccat_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">    </span><span class="nt">&quot;ccat_unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mg/mL&quot;</span><span class="p">,</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">    </span><span class="nt">&quot;ph&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">    </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="w">    </span><span class="nt">&quot;formula&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CeO2&quot;</span><span class="p">,</span>
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="w">    </span><span class="nt">&quot;activity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oxidase&quot;</span><span class="p">,</span>
+</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="w">    </span><span class="nt">&quot;syngony&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cubic&quot;</span><span class="p">,</span>
+</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="w">    </span><span class="nt">&quot;length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+</span><span id="__span-15-29"><a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="w">    </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+</span><span id="__span-15-30"><a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a><span class="w">    </span><span class="nt">&quot;depth&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+</span><span id="__span-15-31"><a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="w">    </span><span class="nt">&quot;surface&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;poly(ethylene oxide)&quot;</span><span class="p">,</span>
+</span><span id="__span-15-32"><a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a><span class="w">    </span><span class="nt">&quot;km_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">54.05</span><span class="p">,</span>
+</span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a><span class="w">    </span><span class="nt">&quot;km_unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mM&quot;</span><span class="p">,</span>
+</span><span id="__span-15-34"><a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a><span class="w">    </span><span class="nt">&quot;vmax_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">7.88</span><span class="p">,</span>
+</span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a><span class="w">    </span><span class="nt">&quot;vmax_unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10-8 M s-1&quot;</span><span class="p">,</span>
+</span><span id="__span-15-36"><a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a><span class="w">    </span><span class="nt">&quot;reaction_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TMB&quot;</span><span class="p">,</span>
+</span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a><span class="w">    </span><span class="nt">&quot;c_min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span>
+</span><span id="__span-15-38"><a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a><span class="w">    </span><span class="nt">&quot;c_max&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span>
+</span><span id="__span-15-39"><a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a><span class="w">    </span><span class="nt">&quot;c_const&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span>
+</span><span id="__span-15-40"><a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a><span class="w">    </span><span class="nt">&quot;c_const_unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;μM&quot;</span><span class="p">,</span>
+</span><span id="__span-15-41"><a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a><span class="w">    </span><span class="nt">&quot;ccat_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span>
+</span><span id="__span-15-42"><a id="__codelineno-15-42" name="__codelineno-15-42" href="#__codelineno-15-42"></a><span class="w">    </span><span class="nt">&quot;ccat_unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mg/mL&quot;</span><span class="p">,</span>
+</span><span id="__span-15-43"><a id="__codelineno-15-43" name="__codelineno-15-43" href="#__codelineno-15-43"></a><span class="w">    </span><span class="nt">&quot;ph&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.5</span><span class="p">,</span>
+</span><span id="__span-15-44"><a id="__codelineno-15-44" name="__codelineno-15-44" href="#__codelineno-15-44"></a><span class="w">    </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span>
+</span><span id="__span-15-45"><a id="__codelineno-15-45" name="__codelineno-15-45" href="#__codelineno-15-45"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-15-46"><a id="__codelineno-15-46" name="__codelineno-15-46" href="#__codelineno-15-46"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="nanomag">Nanomag<a class="headerlink" href="#nanomag" title="Permanent link">&para;</a></h2>
+<h3 id="system-message_8">System Message<a class="headerlink" href="#system-message_8" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in nanomaterials characterization, specifically in magnetic nanoparticles and their physical properties.&quot;</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol_8">Extraction Protocol<a class="headerlink" href="#extraction-protocol_8" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract <strong>every</strong> mention of magnetic properties for <strong>ALL</strong> nanoparticles from a scientific article and output a <strong>JSON array</strong> of objects <strong>only</strong> (no markdown, no commentary, no extra text).</p>
+<h4 id="required-fields_8">Required Fields<a class="headerlink" href="#required-fields_8" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Composition</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Material name</td>
+<td>"BFO", "cobalt iron oxide"</td>
+</tr>
+<tr>
+<td><code>np_core</code></td>
+<td>string</td>
+<td>Composition of material core</td>
+<td>"Gd2O3", "Fe1Fe2O4"</td>
+</tr>
+<tr>
+<td><code>np_shell</code></td>
+<td>string</td>
+<td>Composition of material shell</td>
+<td>"chitosan", "Au1"</td>
+</tr>
+<tr>
+<td><code>core_shell_formula</code></td>
+<td>string</td>
+<td>Combined core-shell formula</td>
+<td>"Cr2O3-Co"</td>
+</tr>
+<tr>
+<td><code>np_shell_2</code></td>
+<td>string</td>
+<td>First additional shell layer</td>
+<td>"PEG-5000"</td>
+</tr>
+<tr>
+<td><code>np_shell_3</code></td>
+<td>string</td>
+<td>Second additional shell layer</td>
+<td>"Curcumin"</td>
+</tr>
+<tr>
+<td><strong>Size Measurements</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>np_hydro_size</code></td>
+<td>number</td>
+<td>Size from DLS (nm)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>xrd_scherrer_size</code></td>
+<td>number</td>
+<td>Crystal size from XRD (nm)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>emic_size</code></td>
+<td>number</td>
+<td>Size from electron microscopy (nm)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Crystal Structure</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>crystal_structure_core_shell</code></td>
+<td>string</td>
+<td>Crystallographic structures</td>
+<td>"hexagonal, cubic"</td>
+</tr>
+<tr>
+<td><code>space_group_core</code></td>
+<td>string</td>
+<td>Space group of core</td>
+<td>"fd-3m", "p4/mmm"</td>
+</tr>
+<tr>
+<td><code>space_group_shell</code></td>
+<td>string</td>
+<td>Space group of shell</td>
+<td>"fd-3m", "p4/mmm"</td>
+</tr>
+<tr>
+<td><code>xrd_crystallinity</code></td>
+<td>string</td>
+<td>Crystallinity type</td>
+<td>"crystalline", "amorphous"</td>
+</tr>
+<tr>
+<td><strong>Magnetic Properties</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>squid_sat_mag</code></td>
+<td>number</td>
+<td>Saturation magnetization (emu/g)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>squid_rem_mag</code></td>
+<td>number</td>
+<td>Remanent magnetization (emu/g)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>exchange_bias_shift_Oe</code></td>
+<td>number</td>
+<td>Exchange bias (Oe)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>vertical_loop_shift_M_vsl_emu_g</code></td>
+<td>number</td>
+<td>Vertical loop shift (emu/g)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>hc_kOe</code></td>
+<td>number</td>
+<td>Coercivity (Oe)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Measurement Conditions</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>squid_h_max</code></td>
+<td>number</td>
+<td>Maximum magnetic field (kOe)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>zfc_h_meas</code></td>
+<td>number</td>
+<td>ZFC measurement field (kOe)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>instrument</code></td>
+<td>string</td>
+<td>Experimental instrument</td>
+<td>"Quantum Design 7 T SQUID"</td>
+</tr>
+<tr>
+<td><code>fc_field_T</code></td>
+<td>number</td>
+<td>FC field (Tesla)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>squid_temperature</code></td>
+<td>number</td>
+<td>SQUID temperature (K)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>coercivity</code></td>
+<td>number</td>
+<td>Coercivity (kOe)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Additional Properties</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>htherm_sar</code></td>
+<td>number</td>
+<td>Specific absorption rate (W/g)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mri_r1</code></td>
+<td>number</td>
+<td>MRI relaxation rate r1 (mM⁻¹·s⁻¹)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mri_r2</code></td>
+<td>number</td>
+<td>MRI relaxation rate r2 (mM⁻¹·s⁻¹)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>blocking_temperature_K</code></td>
+<td>number</td>
+<td>Blocking temperature (K)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>curie_temperature_K</code></td>
+<td>number</td>
+<td>Curie temperature (K)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="extraction-rules_8">Extraction Rules<a class="headerlink" href="#extraction-rules_8" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Extract <strong>each</strong> nanoparticle mention as a separate object.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate. Include repeated mentions and duplicates if they occur in different contexts.</p>
+</li>
+<li>
+<p>If you cannot find a required field for an object, re-check the context; if it's still absent, set that field's value to <code>"NOT_DETECTED"</code>.</p>
+</li>
+<li>
+<p>Unit conversions for magnetic properties:</p>
+</li>
+<li>For coercivity/exchange bias: 1T = 1000 Oe, 1 mT = 10000 Oe, 1kOe = 1000 Oe</li>
+<li>
+<p>For magnetization measurements: 1 A·m²/kg = 1 emu/g, 1 μ₀M(T) = 0.01257 emu/g</p>
+</li>
+<li>
+<p>Preserve signs for exchange bias and vertical loop shift (default to + if not specified).</p>
+</li>
+<li>
+<p>Extract <strong>all</strong> magnetic nanoparticles present in the article.</p>
+</li>
+</ol>
+<h3 id="output-format_8">Output Format<a class="headerlink" href="#output-format_8" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">[</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bismuth Ferrite&quot;</span><span class="p">,</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="nt">&quot;np_core&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BiFeO3&quot;</span><span class="p">,</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="nt">&quot;np_shell&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chitosan&quot;</span><span class="p">,</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">    </span><span class="nt">&quot;core_shell_formula&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BiFeO3-chitosan&quot;</span><span class="p">,</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span><span class="nt">&quot;np_shell_2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PEG-5000&quot;</span><span class="p">,</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="nt">&quot;np_shell_3&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Curcumin&quot;</span><span class="p">,</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="nt">&quot;np_hydro_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">    </span><span class="nt">&quot;xrd_scherrer_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">    </span><span class="nt">&quot;emic_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span><span class="nt">&quot;crystal_structure_core_shell&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rhombohedral, amorphous&quot;</span><span class="p">,</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">    </span><span class="nt">&quot;space_group_core&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;R3c&quot;</span><span class="p">,</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">    </span><span class="nt">&quot;space_group_shell&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P2_1&quot;</span><span class="p">,</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">    </span><span class="nt">&quot;xrd_crystallinity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;partially crystalline&quot;</span><span class="p">,</span>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">    </span><span class="nt">&quot;squid_sat_mag&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">40.5</span><span class="p">,</span>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">    </span><span class="nt">&quot;squid_rem_mag&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">22.1</span><span class="p">,</span>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">    </span><span class="nt">&quot;exchange_bias_shift_Oe&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span>
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="w">    </span><span class="nt">&quot;vertical_loop_shift_M_vsl_emu_g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.6</span><span class="p">,</span>
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="w">    </span><span class="nt">&quot;hc_kOe&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.2</span><span class="p">,</span>
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="w">    </span><span class="nt">&quot;squid_h_max&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span>
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="w">    </span><span class="nt">&quot;zfc_h_meas&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="w">    </span><span class="nt">&quot;instrument&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Quantum Design 7 T SQUID magnetometer&quot;</span><span class="p">,</span>
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="w">    </span><span class="nt">&quot;fc_field_T&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="w">    </span><span class="nt">&quot;squid_temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a><span class="w">    </span><span class="nt">&quot;coercivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.5</span><span class="p">,</span>
+</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="w">    </span><span class="nt">&quot;htherm_sar&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span>
+</span><span id="__span-17-28"><a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a><span class="w">    </span><span class="nt">&quot;mri_r1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span>
+</span><span id="__span-17-29"><a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a><span class="w">    </span><span class="nt">&quot;mri_r2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.3</span><span class="p">,</span>
+</span><span id="__span-17-30"><a id="__codelineno-17-30" name="__codelineno-17-30" href="#__codelineno-17-30"></a><span class="w">    </span><span class="nt">&quot;blocking_temperature_K&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">350</span><span class="p">,</span>
+</span><span id="__span-17-31"><a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a><span class="w">    </span><span class="nt">&quot;curie_temperature_K&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span>
+</span><span id="__span-17-32"><a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-17-33"><a id="__codelineno-17-33" name="__codelineno-17-33" href="#__codelineno-17-33"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="synergy">Synergy<a class="headerlink" href="#synergy" title="Permanent link">&para;</a></h2>
+<h3 id="system-message_9">System Message<a class="headerlink" href="#system-message_9" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">{</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in antimicrobial drug nanoparticle synergy.&quot;</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol_9">Extraction Protocol<a class="headerlink" href="#extraction-protocol_9" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract <strong>every</strong> mention of nanoparticle properties, drug details, and their synergistic antibacterial effects from a scientific article, and output a <strong>JSON array</strong> of objects <strong>only</strong>.</p>
+<h4 id="required-fields_9">Required Fields<a class="headerlink" href="#required-fields_9" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nanoparticle Properties</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>NP</code></td>
+<td>string</td>
+<td>Nanoparticle name</td>
+<td>"Ag", "Au"</td>
+</tr>
+<tr>
+<td><code>NP_synthesis</code></td>
+<td>string</td>
+<td>Synthesis method</td>
+<td>"chemical synthesis"</td>
+</tr>
+<tr>
+<td><code>NP_concentration_µg_ml</code></td>
+<td>number</td>
+<td>Nanoparticle concentration</td>
+<td></td>
+</tr>
+<tr>
+<td><code>NP_size_min_nm</code></td>
+<td>number</td>
+<td>Minimum particle size (nm)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>NP_size_max_nm</code></td>
+<td>number</td>
+<td>Maximum particle size (nm)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>NP_size_avg_nm</code></td>
+<td>number</td>
+<td>Average particle size (nm)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>shape</code></td>
+<td>string</td>
+<td>Particle morphology</td>
+<td>"spherical", "rod-shaped"</td>
+</tr>
+<tr>
+<td><code>zeta_potential_mV</code></td>
+<td>number</td>
+<td>Surface charge (mV)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Bacterial Information</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>bacteria</code></td>
+<td>string</td>
+<td>Bacterial species</td>
+<td>"Escherichia coli"</td>
+</tr>
+<tr>
+<td><code>strain</code></td>
+<td>string</td>
+<td>Strain identifier</td>
+<td>"ATCC 25922"</td>
+</tr>
+<tr>
+<td><code>MDR</code></td>
+<td>string</td>
+<td>Multidrug resistance status</td>
+<td>"Yes", "No"</td>
+</tr>
+<tr>
+<td><strong>Drug Properties</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>drug</code></td>
+<td>string</td>
+<td>Antibiotic name</td>
+<td>"Ampicillin"</td>
+</tr>
+<tr>
+<td><code>drug_dose_µg_disk</code></td>
+<td>number</td>
+<td>Drug dosage</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Experimental Methods</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>string</td>
+<td>Assessment technique</td>
+<td>"MIC", "disc_diffusion"</td>
+</tr>
+<tr>
+<td><code>time_hr</code></td>
+<td>number</td>
+<td>Exposure duration (hours)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Activity Measurements</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ZOI_drug_mm_or_MIC _µg_m</code></td>
+<td>number</td>
+<td>Drug activity</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error_ZOI_drug_mm_or_MIC_µg_ml</code></td>
+<td>number</td>
+<td>Drug activity error</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ZOI_NP_mm_or_MIC_np_µg_ml</code></td>
+<td>number</td>
+<td>NP activity</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error_ZOI_NP_mm_or_MIC_np_µg_ml</code></td>
+<td>number</td>
+<td>NP activity error</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ZOI_drug_NP_mm_or_MIC_drug_NP_µg_ml</code></td>
+<td>number</td>
+<td>Combined activity</td>
+<td></td>
+</tr>
+<tr>
+<td><code>error_ZOI_drug_NP_mm_or_MIC_drug_NP_µg_ml</code></td>
+<td>number</td>
+<td>Combined activity error</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Synergy Metrics</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>fold_increase_in_antibacterial_activity</code></td>
+<td>number</td>
+<td>Activity enhancement</td>
+<td></td>
+</tr>
+<tr>
+<td><code>FIC</code></td>
+<td>number</td>
+<td>Fractional Inhibitory Concentration</td>
+<td></td>
+</tr>
+<tr>
+<td><code>effect</code></td>
+<td>string</td>
+<td>Interaction type</td>
+<td>"synergistic", "additive"</td>
+</tr>
+<tr>
+<td><strong>Additional Parameters</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>coating_with_antimicrobial_peptide_polymers</code></td>
+<td>string</td>
+<td>Surface modification</td>
+<td></td>
+</tr>
+<tr>
+<td><code>combined_MIC</code></td>
+<td>number</td>
+<td>Combined MIC (µg/ml)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>peptide_MIC</code></td>
+<td>number</td>
+<td>Peptide MIC (µg/ml)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>viability_%</code></td>
+<td>number</td>
+<td>Bacterial survival (%)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>viability_error</code></td>
+<td>number</td>
+<td>Viability measurement error</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="extraction-rules_9">Extraction Rules<a class="headerlink" href="#extraction-rules_9" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Extract <strong>each</strong> nanoparticles mention as a separate object.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate. Include repeated mentions and duplicates if they occur in different contexts.</p>
+</li>
+<li>
+<p>If you cannot find a required field for an object, re-check the context; if it's still absent, set that field's value to <code>"NOT_DETECTED"</code>.</p>
+</li>
+<li>
+<p>Extract <strong>all</strong> nanoparticles present in the article.</p>
+</li>
+</ol>
+<h3 id="output-format_9">Output Format<a class="headerlink" href="#output-format_9" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">[</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="nt">&quot;NP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ag&quot;</span><span class="p">,</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span><span class="nt">&quot;bacteria&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Pseudomonas aeruginosa&quot;</span><span class="p">,</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">    </span><span class="nt">&quot;strain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATCC 27853&quot;</span><span class="p">,</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span><span class="nt">&quot;NP_synthesis&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Green synthesis using Gloeophyllum striatum&quot;</span><span class="p">,</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span><span class="nt">&quot;drug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ampicillin&quot;</span><span class="p">,</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">    </span><span class="nt">&quot;drug_dose_µg_disk&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">16.0</span><span class="p">,</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">    </span><span class="nt">&quot;NP_concentration_µg_ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">32.0</span><span class="p">,</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">    </span><span class="nt">&quot;NP_size_min_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">    </span><span class="nt">&quot;NP_size_max_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">40.0</span><span class="p">,</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">    </span><span class="nt">&quot;NP_size_avg_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">    </span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;spherical&quot;</span><span class="p">,</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">    </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIC&quot;</span><span class="p">,</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">    </span><span class="nt">&quot;ZOI_drug_mm_or_MIC _µg_ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">16.0</span><span class="p">,</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">    </span><span class="nt">&quot;error_ZOI_drug_mm_or_MIC_µg_ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.40</span><span class="p">,</span>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="w">    </span><span class="nt">&quot;ZOI_NP_mm_or_MIC_np_µg_ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">32.0</span><span class="p">,</span>
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">    </span><span class="nt">&quot;error_ZOI_NP_mm_or_MIC_np_µg_ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.43</span><span class="p">,</span>
+</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="w">    </span><span class="nt">&quot;ZOI_drug_NP_mm_or_MIC_drug_NP_µg_ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span>
+</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="w">    </span><span class="nt">&quot;error_ZOI_drug_NP_mm_or_MIC_drug_NP_µg_ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.50</span><span class="p">,</span>
+</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">    </span><span class="nt">&quot;fold_increase_in_antibacterial_activity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span>
+</span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">    </span><span class="nt">&quot;zeta_potential_mV&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-34.0</span><span class="p">,</span>
+</span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="w">    </span><span class="nt">&quot;MDR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;R&quot;</span><span class="p">,</span>
+</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="w">    </span><span class="nt">&quot;FIC&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="w">    </span><span class="nt">&quot;effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;synergistic&quot;</span><span class="p">,</span>
+</span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="w">    </span><span class="nt">&quot;time_hr&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">24.0</span><span class="p">,</span>
+</span><span id="__span-19-27"><a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="w">    </span><span class="nt">&quot;coating_with_antimicrobial_peptide_polymers&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AP Lysozyme hen egg-white&quot;</span><span class="p">,</span>
+</span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="w">    </span><span class="nt">&quot;combined_MIC&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+</span><span id="__span-19-29"><a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="w">    </span><span class="nt">&quot;peptide_MIC&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span>
+</span><span id="__span-19-30"><a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="w">    </span><span class="nt">&quot;viability_%&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">87.0</span><span class="p">,</span>
+</span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="w">    </span><span class="nt">&quot;viability_error&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.40</span>
+</span><span id="__span-19-32"><a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-33"><a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="seltox">Seltox<a class="headerlink" href="#seltox" title="Permanent link">&para;</a></h2>
+<h3 id="system-message_10">System Message<a class="headerlink" href="#system-message_10" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="p">{</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in antimicrobial nanoparticles.&quot;</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol_10">Extraction Protocol<a class="headerlink" href="#extraction-protocol_10" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract information for <strong>ALL</strong> antimicrobial nanoparticles from a scientific article and output a <strong>JSON array</strong> of objects <strong>only</strong> (no markdown, no commentary, no extra text).</p>
+<h4 id="required-fields_10">Required Fields<a class="headerlink" href="#required-fields_10" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>np</code></td>
+<td>string</td>
+<td>Nanoparticle name</td>
+<td>"Ag", "Au", "ZnO"</td>
+</tr>
+<tr>
+<td><code>coating</code></td>
+<td>string</td>
+<td>Surface coating/modification</td>
+<td>"1" for coating, "0" for none</td>
+</tr>
+<tr>
+<td><code>bacteria</code></td>
+<td>string</td>
+<td>Bacterial strain tested</td>
+<td>"Escherichia coli", "Staphylococcus aureus"</td>
+</tr>
+<tr>
+<td><code>mdr</code></td>
+<td>number</td>
+<td>Multidrug-resistant strain indicator</td>
+<td>1 (MDR), 0 (not MDR)</td>
+</tr>
+<tr>
+<td><code>strain</code></td>
+<td>string</td>
+<td>Specific strain identifier</td>
+<td>"ATCC 25922"</td>
+</tr>
+<tr>
+<td><code>np_synthesis</code></td>
+<td>string</td>
+<td>Synthesis method</td>
+<td>"green_synthesis", "chemical_synthesis"</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>string</td>
+<td>Assay type</td>
+<td>"MIC", "ZOI", "MBC", "MBEC"</td>
+</tr>
+<tr>
+<td><code>mic_np_µg_ml</code></td>
+<td>number</td>
+<td>Minimum Inhibitory Concentration</td>
+<td>μg/mL</td>
+</tr>
+<tr>
+<td><code>concentration</code></td>
+<td>number</td>
+<td>Concentration for ZOI</td>
+<td>μg/mL</td>
+</tr>
+<tr>
+<td><code>zoi_np_mm</code></td>
+<td>number</td>
+<td>Zone of Inhibition</td>
+<td>mm</td>
+</tr>
+<tr>
+<td><code>np_size_min_nm</code></td>
+<td>number</td>
+<td>Minimum nanoparticle size</td>
+<td>nm</td>
+</tr>
+<tr>
+<td><code>np_size_max_nm</code></td>
+<td>number</td>
+<td>Maximum nanoparticle size</td>
+<td>nm</td>
+</tr>
+<tr>
+<td><code>np_size_avg_nm</code></td>
+<td>number</td>
+<td>Average nanoparticle size</td>
+<td>nm</td>
+</tr>
+<tr>
+<td><code>shape</code></td>
+<td>string</td>
+<td>Morphology</td>
+<td>"spherical", "triangular"</td>
+</tr>
+<tr>
+<td><code>time_set_hours</code></td>
+<td>number</td>
+<td>Experiment duration</td>
+<td>hours</td>
+</tr>
+<tr>
+<td><code>zeta_potential_mV</code></td>
+<td>number</td>
+<td>Surface charge</td>
+<td>mV</td>
+</tr>
+<tr>
+<td><code>solvent_for_extract</code></td>
+<td>string</td>
+<td>Solvent used in green synthesis</td>
+<td>"water", "ethanol"</td>
+</tr>
+<tr>
+<td><code>temperature_for_extract_C</code></td>
+<td>number</td>
+<td>Extract preparation temperature</td>
+<td>°C</td>
+</tr>
+<tr>
+<td><code>duration_preparing_extract_min</code></td>
+<td>number</td>
+<td>Extract preparation time</td>
+<td>minutes</td>
+</tr>
+<tr>
+<td><code>precursor_of_np</code></td>
+<td>string</td>
+<td>Chemical precursor</td>
+<td>"AgNO3"</td>
+</tr>
+<tr>
+<td><code>concentration_of_precursor_mM</code></td>
+<td>number</td>
+<td>Precursor concentration</td>
+<td>mM</td>
+</tr>
+<tr>
+<td><code>hydrodynamic_diameter_nm</code></td>
+<td>number</td>
+<td>Hydrodynamic size</td>
+<td>nm</td>
+</tr>
+<tr>
+<td><code>ph_during_synthesis</code></td>
+<td>number</td>
+<td>pH of synthesis solution</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="extraction-rules_10">Extraction Rules<a class="headerlink" href="#extraction-rules_10" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Extract solvents and precursors as strings without parsing into molecular components.</p>
+</li>
+<li>
+<p>Extract <strong>each</strong> nanoparticle mention as a separate object.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate. Include repeated mentions and duplicates if they occur in different contexts.</p>
+</li>
+<li>
+<p>If you cannot find a required field for an object, re-check the context; if it's still absent, set that field's value to <code>"NOT_DETECTED"</code>.</p>
+</li>
+<li>
+<p>The example output shows only two extracted samples, however your output should contain <strong>all</strong> nanoparticles present in the article.</p>
+</li>
+</ol>
+<h3 id="output-format_10">Output Format<a class="headerlink" href="#output-format_10" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">[</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span><span class="nt">&quot;np&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ag&quot;</span><span class="p">,</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="nt">&quot;coating&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="nt">&quot;bacteria&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enterococcus faecalis&quot;</span><span class="p">,</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span><span class="nt">&quot;mdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">    </span><span class="nt">&quot;strain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATCC 29212&quot;</span><span class="p">,</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">    </span><span class="nt">&quot;np_synthesis&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Green synthesis using Ixora brachypoda&quot;</span><span class="p">,</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">    </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIC&quot;</span><span class="p">,</span>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">    </span><span class="nt">&quot;mic_np_µg_ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">32.0</span><span class="p">,</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w">    </span><span class="nt">&quot;concentration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="w">    </span><span class="nt">&quot;zoi_np_mm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="w">    </span><span class="nt">&quot;np_size_min_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="w">    </span><span class="nt">&quot;np_size_max_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">40.0</span><span class="p">,</span>
+</span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="w">    </span><span class="nt">&quot;np_size_avg_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span>
+</span><span id="__span-21-16"><a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="w">    </span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;spherical&quot;</span><span class="p">,</span>
+</span><span id="__span-21-17"><a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="w">    </span><span class="nt">&quot;time_set_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span>
+</span><span id="__span-21-18"><a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a><span class="w">    </span><span class="nt">&quot;zeta_potential_mV&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-27.9</span><span class="p">,</span>
+</span><span id="__span-21-19"><a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="w">    </span><span class="nt">&quot;solvent_for_extract&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;water&quot;</span><span class="p">,</span>
+</span><span id="__span-21-20"><a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="w">    </span><span class="nt">&quot;temperature_for_extract_C&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">21.0</span><span class="p">,</span>
+</span><span id="__span-21-21"><a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="w">    </span><span class="nt">&quot;duration_preparing_extract_min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
+</span><span id="__span-21-22"><a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a><span class="w">    </span><span class="nt">&quot;precursor_of_np&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AgNO3&quot;</span><span class="p">,</span>
+</span><span id="__span-21-23"><a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a><span class="w">    </span><span class="nt">&quot;concentration_of_precursor_mM&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+</span><span id="__span-21-24"><a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a><span class="w">    </span><span class="nt">&quot;hydrodynamic_diameter_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span>
+</span><span id="__span-21-25"><a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a><span class="w">    </span><span class="nt">&quot;ph_during_synthesis&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.5</span>
+</span><span id="__span-21-26"><a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-21-27"><a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-21-28"><a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a><span class="w">    </span><span class="nt">&quot;np&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ZnO&quot;</span><span class="p">,</span>
+</span><span id="__span-21-29"><a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a><span class="w">    </span><span class="nt">&quot;coating&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+</span><span id="__span-21-30"><a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a><span class="w">    </span><span class="nt">&quot;bacteria&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Klebsiella pneumoniae&quot;</span><span class="p">,</span>
+</span><span id="__span-21-31"><a id="__codelineno-21-31" name="__codelineno-21-31" href="#__codelineno-21-31"></a><span class="w">    </span><span class="nt">&quot;mdr&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-21-32"><a id="__codelineno-21-32" name="__codelineno-21-32" href="#__codelineno-21-32"></a><span class="w">    </span><span class="nt">&quot;strain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;K-36&quot;</span><span class="p">,</span>
+</span><span id="__span-21-33"><a id="__codelineno-21-33" name="__codelineno-21-33" href="#__codelineno-21-33"></a><span class="w">    </span><span class="nt">&quot;np_synthesis&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Green synthesis using Phyllanthus emblica&quot;</span><span class="p">,</span>
+</span><span id="__span-21-34"><a id="__codelineno-21-34" name="__codelineno-21-34" href="#__codelineno-21-34"></a><span class="w">    </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIC&quot;</span><span class="p">,</span>
+</span><span id="__span-21-35"><a id="__codelineno-21-35" name="__codelineno-21-35" href="#__codelineno-21-35"></a><span class="w">    </span><span class="nt">&quot;mic_np_µg_ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.25</span><span class="p">,</span>
+</span><span id="__span-21-36"><a id="__codelineno-21-36" name="__codelineno-21-36" href="#__codelineno-21-36"></a><span class="w">    </span><span class="nt">&quot;concentration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+</span><span id="__span-21-37"><a id="__codelineno-21-37" name="__codelineno-21-37" href="#__codelineno-21-37"></a><span class="w">    </span><span class="nt">&quot;zoi_np_mm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+</span><span id="__span-21-38"><a id="__codelineno-21-38" name="__codelineno-21-38" href="#__codelineno-21-38"></a><span class="w">    </span><span class="nt">&quot;np_size_min_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span>
+</span><span id="__span-21-39"><a id="__codelineno-21-39" name="__codelineno-21-39" href="#__codelineno-21-39"></a><span class="w">    </span><span class="nt">&quot;np_size_max_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span>
+</span><span id="__span-21-40"><a id="__codelineno-21-40" name="__codelineno-21-40" href="#__codelineno-21-40"></a><span class="w">    </span><span class="nt">&quot;np_size_avg_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span>
+</span><span id="__span-21-41"><a id="__codelineno-21-41" name="__codelineno-21-41" href="#__codelineno-21-41"></a><span class="w">    </span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;spherical&quot;</span><span class="p">,</span>
+</span><span id="__span-21-42"><a id="__codelineno-21-42" name="__codelineno-21-42" href="#__codelineno-21-42"></a><span class="w">    </span><span class="nt">&quot;time_set_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">24.0</span><span class="p">,</span>
+</span><span id="__span-21-43"><a id="__codelineno-21-43" name="__codelineno-21-43" href="#__codelineno-21-43"></a><span class="w">    </span><span class="nt">&quot;zeta_potential_mV&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-32</span><span class="p">,</span>
+</span><span id="__span-21-44"><a id="__codelineno-21-44" name="__codelineno-21-44" href="#__codelineno-21-44"></a><span class="w">    </span><span class="nt">&quot;solvent_for_extract&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;methanol&quot;</span><span class="p">,</span>
+</span><span id="__span-21-45"><a id="__codelineno-21-45" name="__codelineno-21-45" href="#__codelineno-21-45"></a><span class="w">    </span><span class="nt">&quot;temperature_for_extract_C&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+</span><span id="__span-21-46"><a id="__codelineno-21-46" name="__codelineno-21-46" href="#__codelineno-21-46"></a><span class="w">    </span><span class="nt">&quot;duration_preparing_extract_min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+</span><span id="__span-21-47"><a id="__codelineno-21-47" name="__codelineno-21-47" href="#__codelineno-21-47"></a><span class="w">    </span><span class="nt">&quot;precursor_of_np&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zn(NO3).6.H2O&quot;</span><span class="p">,</span>
+</span><span id="__span-21-48"><a id="__codelineno-21-48" name="__codelineno-21-48" href="#__codelineno-21-48"></a><span class="w">    </span><span class="nt">&quot;concentration_of_precursor_mM&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-21-49"><a id="__codelineno-21-49" name="__codelineno-21-49" href="#__codelineno-21-49"></a><span class="w">    </span><span class="nt">&quot;hydrodynamic_diameter_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+</span><span id="__span-21-50"><a id="__codelineno-21-50" name="__codelineno-21-50" href="#__codelineno-21-50"></a><span class="w">    </span><span class="nt">&quot;ph_during_synthesis&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">7.0</span>
+</span><span id="__span-21-51"><a id="__codelineno-21-51" name="__codelineno-21-51" href="#__codelineno-21-51"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-21-52"><a id="__codelineno-21-52" name="__codelineno-21-52" href="#__codelineno-21-52"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h2 id="cytotox">Cytotox<a class="headerlink" href="#cytotox" title="Permanent link">&para;</a></h2>
+<h3 id="system-message_11">System Message<a class="headerlink" href="#system-message_11" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="p">{</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a domain-specific chemical information extraction assistant.&quot;</span><span class="p">,</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="s2">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;You specialize in cytotoxic nanoparticles.&quot;</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="extraction-protocol_11">Extraction Protocol<a class="headerlink" href="#extraction-protocol_11" title="Permanent link">&para;</a></h3>
+<p>Your task is to extract information for <strong>ALL</strong> cytotoxic nanoparticles from a scientific article and output a <strong>JSON array</strong> of objects <strong>only</strong> (no markdown, no commentary, no extra text).</p>
+<h4 id="required-fields_11">Required Fields<a class="headerlink" href="#required-fields_11" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Material Properties</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>material</code></td>
+<td>string</td>
+<td>Nanoparticle composition</td>
+<td>"SiO2", "Ag"</td>
+</tr>
+<tr>
+<td><code>shape</code></td>
+<td>string</td>
+<td>Physical shape</td>
+<td>"Sphere", "Rod"</td>
+</tr>
+<tr>
+<td><code>coat_functional_group</code></td>
+<td>string</td>
+<td>Surface coating</td>
+<td>"CTAB", "PEG"</td>
+</tr>
+<tr>
+<td><code>synthesis_method</code></td>
+<td>string</td>
+<td>Synthesis method</td>
+<td>"Precipitation", "Commercial"</td>
+</tr>
+<tr>
+<td><code>surface_charge</code></td>
+<td>string</td>
+<td>Surface charge type</td>
+<td>"Negative", "Neutral", "Positive"</td>
+</tr>
+<tr>
+<td><strong>Size Measurements</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>core_nm</code></td>
+<td>number</td>
+<td>Primary particle size (nm)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>size_in_medium_nm</code></td>
+<td>number</td>
+<td>Size in biological medium (nm)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>hydrodynamic_nm</code></td>
+<td>number</td>
+<td>Size with coatings (nm)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Surface Properties</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>potential_mv</code></td>
+<td>number</td>
+<td>Surface charge (mV)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>zeta_in_medium_mv</code></td>
+<td>number</td>
+<td>Zeta potential in medium (mV)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Cell Parameters</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>no_of_cells_cells_well</code></td>
+<td>number</td>
+<td>Cell density per well</td>
+<td></td>
+</tr>
+<tr>
+<td><code>human_animal</code></td>
+<td>string</td>
+<td>Cell origin</td>
+<td>"A" (Animal), "H" (Human)</td>
+</tr>
+<tr>
+<td><code>cell_source</code></td>
+<td>string</td>
+<td>Species/organism</td>
+<td>"Rat", "Human"</td>
+</tr>
+<tr>
+<td><code>cell_tissue</code></td>
+<td>string</td>
+<td>Tissue origin</td>
+<td>"Adrenal Gland", "Lung"</td>
+</tr>
+<tr>
+<td><code>cell_morphology</code></td>
+<td>string</td>
+<td>Cell shape</td>
+<td>"Irregular", "Epithelial"</td>
+</tr>
+<tr>
+<td><code>cell_age</code></td>
+<td>string</td>
+<td>Developmental stage</td>
+<td>"Adult", "Embryonic"</td>
+</tr>
+<tr>
+<td><strong>Experimental Conditions</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>time_hr</code></td>
+<td>number</td>
+<td>Exposure duration (hours)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>concentration</code></td>
+<td>number</td>
+<td>Material concentration</td>
+<td></td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td>string</td>
+<td>Cytotoxicity assay</td>
+<td>"MTT", "LDH"</td>
+</tr>
+<tr>
+<td><code>test_indicator</code></td>
+<td>string</td>
+<td>Measured reagent</td>
+<td>"TetrazoliumSalt"</td>
+</tr>
+<tr>
+<td><code>viability_%</code></td>
+<td>number</td>
+<td>Cell viability percentage</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="extraction-rules_11">Extraction Rules<a class="headerlink" href="#extraction-rules_11" title="Permanent link">&para;</a></h4>
+<ol>
+<li>For multiple values:</li>
+<li>Prioritize TEM measurements for core_nm</li>
+<li>Note concentration units from context</li>
+<li>
+<p>Extract viability as reported (&gt;100% allowed)</p>
+</li>
+<li>
+<p>Data priority:</p>
+</li>
+<li>Table data over text</li>
+<li>
+<p>Note assumptions for ambiguous data</p>
+</li>
+<li>
+<p>Extract <strong>each</strong> nanoparticle mention as a separate object.</p>
+</li>
+<li>
+<p>Do <strong>not</strong> filter, group, summarize, or deduplicate.</p>
+</li>
+<li>
+<p>Use <code>"NOT_DETECTED"</code> for missing fields after recheck.</p>
+</li>
+<li>
+<p>Include <strong>all</strong> nanoparticles from the article.</p>
+</li>
+</ol>
+<h3 id="output-format_11">Output Format<a class="headerlink" href="#output-format_11" title="Permanent link">&para;</a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="p">[</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="nt">&quot;material&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SiO2&quot;</span><span class="p">,</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rod&quot;</span><span class="p">,</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">    </span><span class="nt">&quot;coat_functional_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PEG&quot;</span><span class="p">,</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">    </span><span class="nt">&quot;synthesis_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Precipitation&quot;</span><span class="p">,</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">    </span><span class="nt">&quot;surface_charge&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Negative&quot;</span><span class="p">,</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">    </span><span class="nt">&quot;core_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">    </span><span class="nt">&quot;size_in_medium_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">25.0</span><span class="p">,</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="w">    </span><span class="nt">&quot;hydrodynamic_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">30.0</span><span class="p">,</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="w">    </span><span class="nt">&quot;potential_mv&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-15.0</span><span class="p">,</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="w">    </span><span class="nt">&quot;zeta_in_medium_mv&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-10.0</span><span class="p">,</span>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="w">    </span><span class="nt">&quot;no_of_cells_cells_well&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5000.0</span><span class="p">,</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="w">    </span><span class="nt">&quot;human_animal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;H&quot;</span><span class="p">,</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="w">    </span><span class="nt">&quot;cell_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Human&quot;</span><span class="p">,</span>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="w">    </span><span class="nt">&quot;cell_tissue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lung&quot;</span><span class="p">,</span>
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="w">    </span><span class="nt">&quot;cell_morphology&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Epithelial&quot;</span><span class="p">,</span>
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="w">    </span><span class="nt">&quot;cell_age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Adult&quot;</span><span class="p">,</span>
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="w">    </span><span class="nt">&quot;time_hr&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">24.0</span><span class="p">,</span>
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="w">    </span><span class="nt">&quot;concentration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span>
+</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MTT&quot;</span><span class="p">,</span>
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="w">    </span><span class="nt">&quot;test_indicator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TetrazoliumSalt&quot;</span><span class="p">,</span>
+</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a><span class="w">    </span><span class="nt">&quot;viability_%&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">85.0</span>
+</span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a><span class="w">    </span><span class="nt">&quot;material&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fe3O4&quot;</span><span class="p">,</span>
+</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a><span class="w">    </span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sphere&quot;</span><span class="p">,</span>
+</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a><span class="w">    </span><span class="nt">&quot;coat_functional_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dextran&quot;</span><span class="p">,</span>
+</span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a><span class="w">    </span><span class="nt">&quot;synthesis_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Thermal Decomposition&quot;</span><span class="p">,</span>
+</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a><span class="w">    </span><span class="nt">&quot;surface_charge&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Positive&quot;</span><span class="p">,</span>
+</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a><span class="w">    </span><span class="nt">&quot;core_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span>
+</span><span id="__span-23-32"><a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a><span class="w">    </span><span class="nt">&quot;size_in_medium_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">15.0</span><span class="p">,</span>
+</span><span id="__span-23-33"><a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a><span class="w">    </span><span class="nt">&quot;hydrodynamic_nm&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">18.0</span><span class="p">,</span>
+</span><span id="__span-23-34"><a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a><span class="w">    </span><span class="nt">&quot;potential_mv&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-30.0</span><span class="p">,</span>
+</span><span id="__span-23-35"><a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a><span class="w">    </span><span class="nt">&quot;zeta_in_medium_mv&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-15.0</span><span class="p">,</span>
+</span><span id="__span-23-36"><a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a><span class="w">    </span><span class="nt">&quot;no_of_cells_cells_well&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0</span><span class="p">,</span>
+</span><span id="__span-23-37"><a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a><span class="w">    </span><span class="nt">&quot;human_animal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span>
+</span><span id="__span-23-38"><a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a><span class="w">    </span><span class="nt">&quot;cell_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dog&quot;</span><span class="p">,</span>
+</span><span id="__span-23-39"><a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a><span class="w">    </span><span class="nt">&quot;cell_tissue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kidney&quot;</span><span class="p">,</span>
+</span><span id="__span-23-40"><a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a><span class="w">    </span><span class="nt">&quot;cell_morphology&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Epithelial&quot;</span><span class="p">,</span>
+</span><span id="__span-23-41"><a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a><span class="w">    </span><span class="nt">&quot;cell_age&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Adult&quot;</span><span class="p">,</span>
+</span><span id="__span-23-42"><a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a><span class="w">    </span><span class="nt">&quot;time_hr&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">24.0</span><span class="p">,</span>
+</span><span id="__span-23-43"><a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a><span class="w">    </span><span class="nt">&quot;concentration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span>
+</span><span id="__span-23-44"><a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a><span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MTT&quot;</span><span class="p">,</span>
+</span><span id="__span-23-45"><a id="__codelineno-23-45" name="__codelineno-23-45" href="#__codelineno-23-45"></a><span class="w">    </span><span class="nt">&quot;test_indicator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TetrazoliumSalt&quot;</span><span class="p">,</span>
+</span><span id="__span-23-46"><a id="__codelineno-23-46" name="__codelineno-23-46" href="#__codelineno-23-46"></a><span class="w">    </span><span class="nt">&quot;viability_%&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">115.09</span>
+</span><span id="__span-23-47"><a id="__codelineno-23-47" name="__codelineno-23-47" href="#__codelineno-23-47"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-23-48"><a id="__codelineno-23-48" name="__codelineno-23-48" href="#__codelineno-23-48"></a><span class="p">]</span>
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="data_extraction.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data extraction">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Data extraction
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="data_validation.html" class="md-footer__link md-footer__link--next" aria-label="Next: Data validation">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Data validation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Center for AI in Chemistry, ITMO University
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.code.copy", "content.code.select", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.footer", "navigation.path", "navigation.tracking", "navigation.sections", "navigation.indexes", "navigation.collapse", "navigation.top", "search.highlight", "search.suggest", "search.share", "header.autohide", "toc.follow"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
