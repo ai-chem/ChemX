@@ -1459,7 +1459,14 @@ To collect and standardize thermodynamic data for metal–ligand complexes from 
 <p>This dataset can be used to facilitate the study of metal–ligand binding behavior and to serve as a benchmark for information extraction tools in chemical and biomedical domains.</p>
 <hr />
 <h2 id="validation-results">Validation Results<a class="headerlink" href="#validation-results" title="Permanent link">&para;</a></h2>
-<p><em>Coming soon.</em></p>
+<p>The Complexes dataset exhibited 
+<strong>212 corrections</strong> (<strong>190 pattern-based</strong> and <strong>22 isolated</strong>) across <strong>907 rows</strong> and <strong>6 columns</strong>. 
+Errors were concentrated in the <code>compound_name</code>, <code>compound_id</code>, and <code>SMILES</code> columns. 
+Recurring issues involved incomplete mapping of compounds to figure annotations (e.g., missing IDs like “9A”), 
+and tautomeric or scaffold inconsistencies in <code>SMILES</code> strings due to batch extraction from multi-ligand diagrams. 
+These errors frequently repeated within figure groups, enabling the derivation of correction rules.</p>
+<p><img alt="Complexes_bar_total_corrections.svg" src="../assets/Complexes_bar_total_corrections.svg" />
+<img alt="Complexes_heatmap_corrections.svg" src="../assets/Complexes_heatmap_corrections.svg" /></p>
 
 
 

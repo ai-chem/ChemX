@@ -1486,27 +1486,12 @@
 <p>The goal of the dataset is to support research in nanotoxicology by enabling analysis of how nanoparticle characteristics correlate with antibacterial efficacy, particularly against drug-resistant strains.</p>
 <hr />
 <h2 id="validation-results">Validation Results<a class="headerlink" href="#validation-results" title="Permanent link">&para;</a></h2>
-<p>Validation was carried out manually using the original PDF articles available in the folder <code>seltox_article_list(only)</code>. Each record was cross-checked against the article to verify:</p>
-<ul>
-<li>Numerical accuracy (e.g., MIC values, nanoparticle sizes)  </li>
-<li>Correctness of units and synthesis parameters  </li>
-<li>Completeness of metadata (title, journal, DOI)</li>
-</ul>
-<p>The validation results are documented in the file: <code>Validation_SelTox_NeurIPS_updated_data</code></p>
-<p>Key columns in the validation table include:</p>
-<ul>
-<li><code>verification required</code>  </li>
-<li><code>verified_by</code>  </li>
-<li><code>verification_date</code>  </li>
-<li><code>has_mistake_in_data</code>  </li>
-<li><code>has_mistake_in_metadata</code>  </li>
-<li><code>entry_status</code> (e.g., Requires correction)</li>
-</ul>
-<p>Example of issues flagged:</p>
-<ul>
-<li>Entry 2897 marked as <code>Requires correction</code> due to mistakes in data  </li>
-<li>All validation entries include timestamp and verifier name</li>
-</ul>
+<p>The SelTox dataset underwent <strong>51 corrections</strong> (<strong>48 pattern-based</strong> and <strong>3 isolated</strong>). 
+Errors were mostly located in <code>np_synthesis</code>, <code>strain</code>, and <code>bacteria</code> columns, 
+typically reflecting inconsistent terminology for biological strains or procedural details. 
+Most issues were recurring and resolved via rule-based updates.</p>
+<p><img alt="SelTox_bar_total_corrections.svg" src="../assets/SelTox_bar_total_corrections.svg" />
+<img alt="SelTox_heatmap_corrections.svg" src="../assets/SelTox_heatmap_corrections.svg" /></p>
 <hr />
 
 

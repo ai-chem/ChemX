@@ -1502,20 +1502,13 @@
 <p>The dataset is intended for tasks such as <strong>scientific information extraction</strong>, <strong>QSAR modeling</strong>, <strong>structure–activity analysis</strong>, and <strong>antibacterial research</strong> involving small molecules.</p>
 <hr />
 <h2 id="validation-results">Validation Results<a class="headerlink" href="#validation-results" title="Permanent link">&para;</a></h2>
-<p>Validation was performed manually using PDF versions of the articles located in the folder <code>benz_pdfs</code>. Each record was checked for:</p>
-<ul>
-<li>Accuracy of the SMILES structure vs. the diagram in the paper  </li>
-<li>Correctness of MIC values (units, relation sign, numeric value)  </li>
-<li>Match between bacteria and its mentioned source  </li>
-<li>Proper assignment of page numbers and origin types (table, text, image)</li>
-</ul>
-<p>The file includes:</p>
-<ul>
-<li>Whether verification is required (<code>verification required</code>)  </li>
-<li>Which records were verified  </li>
-<li>Status of verification  </li>
-</ul>
-<hr />
+<p>The Benzimidazoles dataset contained 
+<strong>77 corrections</strong> (<strong>63 pattern-based</strong>, <strong>14 isolated</strong>), 
+with the primary error loci being <code>smiles</code>, <code>target_value</code>, and <code>compound_id</code>. 
+Common mistakes included inconsistent or incomplete <code>SMILES</code> structures and naming mismatches, 
+often reflecting variable conventions across original publications.</p>
+<p><img alt="Benzimidazoles_bar_total_corrections.svg" src="../assets/Benzimidazoles_bar_total_corrections.svg" />
+<img alt="Benzimidazoles_heatmap_corrections.svg" src="../assets/Benzimidazoles_heatmap_corrections.svg" /></p>
 
 
 
