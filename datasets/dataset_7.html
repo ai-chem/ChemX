@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -978,9 +978,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#text-description" class="md-nav__link">
+  <a href="#dataset-description" class="md-nav__link">
     <span class="md-ellipsis">
-      Text Description
+      Dataset Description
     </span>
   </a>
   
@@ -1252,9 +1252,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#text-description" class="md-nav__link">
+  <a href="#dataset-description" class="md-nav__link">
     <span class="md-ellipsis">
-      Text Description
+      Dataset Description
     </span>
   </a>
   
@@ -1429,33 +1429,52 @@ The dataset contains data on thermodynamic stability constants (lgK) of chelate 
 <td>access</td>
 <td>1 = Open Access, 0 = Closed Access</td>
 </tr>
-<tr>
-<td>---</td>
-<td></td>
-</tr>
 </tbody>
 </table>
+<hr />
 <h2 id="key-notes">Key Notes<a class="headerlink" href="#key-notes" title="Permanent link">&para;</a></h2>
 <p><strong>Objective</strong>:<br />
 To collect and standardize thermodynamic data for metal–ligand complexes from the literature, with a focus on compounds likely to be used as contrast agents in medical applications.</p>
-<p><strong>Extracted entities</strong> include:
-- <code>compound_id</code> – compound's identifier
-- <code>compound_name</code> – compound's abbreviated name
-- <code>smiles</code> – ligand structure in canonical SMILES notation
-- <code>metal</code> – metal forming the complex
-- <code>target</code> – thermodynamic stability constant (lgK)</p>
+<p><strong>Extracted entities</strong> include:<br />
+- <code>compound_id</code> – compound's identifier<br />
+- <code>compound_name</code> – compound's abbreviated name<br />
+- <code>SMILES</code> – ligand structure in canonical SMILES notation<br />
+- <code>SMILES_type</code>: Type of structure (ligand / environment)<br />
+- <code>target</code> – thermodynamic stability constant (lgK)  </p>
 <p><strong>Notes</strong>:
 - All structures are converted into canonical SMILES format using RDKit.
 - Stereochemistry is intentionally stripped to ensure standardization.
 - The dataset includes only structures and values that were directly available in the source documents and satisfied certain extraction criteria.</p>
 <hr />
-<h2 id="text-description">Text Description<a class="headerlink" href="#text-description" title="Permanent link">&para;</a></h2>
-<p>This dataset provides curated measurements of the thermodynamic stability constants (lgK) for metal–ligand complexes, extracted from scientific publications. These stability constants reflect the strength of binding between metal (such as Gd, Ga, Tc, Lu) and chelating organic ligands.</p>
-<p>Each record represents a distinct complex and includes:
-- an extracted ligand structure (<code>smiles</code>)
-- the central metal ion involved (<code>metal</code>)
-- the thermodynamic constant (<code>target</code>, as lgK)
-- bibliographic metadata and direct page/section references</p>
+<h3 id="restrictions-in-sample-parsing"><strong>Restrictions in Sample Parsing</strong><a class="headerlink" href="#restrictions-in-sample-parsing" title="Permanent link">&para;</a></h3>
+<p>To ensure high-quality and consistent data extraction, the following restrictions were applied during sample parsing:</p>
+<ol>
+<li><strong>The complexes must contain a metal from the dataset</strong> (Ga, Gd, Tc, Lu), either as the central metal atom or the ligands must originate from complexes involving these metals.  </li>
+<li><strong>The complete molecular structure must be provided</strong>, without structural errors or unresolved identifiers.  </li>
+<li><strong>Compounds must contain more than one carbon atom</strong> (e.g., CO and Me were excluded).  </li>
+<li><strong>The following types of structures were excluded</strong>:  <ul>
+<li>Polymeric structures  </li>
+<li>Attached biomolecules or carborane clusters  </li>
+<li>Undefined radicals  </li>
+<li>Undeciphered designations (e.g., amino acids) beyond commonly accepted abbreviations such as Me, Et, Pr, Bu, Ph, Ac  </li>
+<li>Named radicals instead of explicit structural formulae  </li>
+<li>Incomplete ligand definitions (e.g., L = P, N)  </li>
+</ul>
+</li>
+<li><strong>Compounds serving as reaction intermediates or precursors</strong> were not included in the dataset.  </li>
+</ol>
+<hr />
+<h2 id="dataset-description">Dataset Description<a class="headerlink" href="#dataset-description" title="Permanent link">&para;</a></h2>
+<p>This dataset provides curated measurements of the thermodynamic stability constants (lgK) for metal–ligand complexes, 
+extracted from scientific publications. 
+These stability constants reflect the strength of binding between metal 
+(such as Gd, Ga, Tc, Lu) and chelating organic ligands.</p>
+<p>Each record represents a distinct complex and includes:<br />
+- an extracted ligand structure (<code>SMILES</code>)<br />
+- the type of ligand representation (<code>SMILES_type</code>)<br />
+- the central metal involved (<code>metal</code>)<br />
+- the thermodynamic constant (<code>target</code>, as lgK)<br />
+- bibliographic metadata and direct page/section references  </p>
 <p>This dataset can be used to facilitate the study of metal–ligand binding behavior and to serve as a benchmark for information extraction tools in chemical and biomedical domains.</p>
 <hr />
 <h2 id="validation-results">Validation Results<a class="headerlink" href="#validation-results" title="Permanent link">&para;</a></h2>
@@ -1566,10 +1585,10 @@ These errors frequently repeated within figure groups, enabling the derivation o
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.code.copy", "content.code.select", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.footer", "navigation.path", "navigation.tracking", "navigation.sections", "navigation.indexes", "navigation.collapse", "navigation.top", "search.highlight", "search.suggest", "search.share", "header.autohide", "toc.follow"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.code.copy", "content.code.select", "content.code.annotate", "content.tabs.link", "content.tooltips", "navigation.footer", "navigation.path", "navigation.tracking", "navigation.sections", "navigation.indexes", "navigation.collapse", "navigation.top", "search.highlight", "search.suggest", "search.share", "header.autohide", "toc.follow"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>
