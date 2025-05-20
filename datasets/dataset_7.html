@@ -969,15 +969,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Notes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#dataset-description" class="md-nav__link">
     <span class="md-ellipsis">
       Dataset Description
@@ -1243,15 +1234,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Notes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#dataset-description" class="md-nav__link">
     <span class="md-ellipsis">
       Dataset Description
@@ -1432,19 +1414,21 @@ The dataset contains data on thermodynamic stability constants (lgK) of chelate 
 </tbody>
 </table>
 <hr />
-<h2 id="key-notes">Key Notes<a class="headerlink" href="#key-notes" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Key Notes</p>
 <p><strong>Objective</strong>:<br />
-To collect and standardize thermodynamic data for metal–ligand complexes from the literature, with a focus on compounds likely to be used as contrast agents in medical applications.</p>
+  To collect and standardize thermodynamic data for metal–ligand complexes from the literature, with a focus on compounds likely to be used as contrast agents in medical applications.</p>
 <p><strong>Extracted entities</strong> include:<br />
-- <code>compound_id</code> – compound's identifier<br />
-- <code>compound_name</code> – compound's abbreviated name<br />
-- <code>SMILES</code> – ligand structure in canonical SMILES notation<br />
-- <code>SMILES_type</code>: Type of structure (ligand / environment)<br />
-- <code>target</code> – thermodynamic stability constant (lgK)  </p>
+  - <code>compound_id</code> – compound's identifier<br />
+    - <code>compound_name</code> – compound's abbreviated name<br />
+    - <code>SMILES</code> – ligand structure in canonical SMILES notation<br />
+    - <code>SMILES_type</code>: Type of structure (ligand / environment)<br />
+    - <code>target</code> – thermodynamic stability constant (lgK)  </p>
 <p><strong>Notes</strong>:
-- All structures are converted into canonical SMILES format using RDKit.
-- Stereochemistry is intentionally stripped to ensure standardization.
-- The dataset includes only structures and values that were directly available in the source documents and satisfied certain extraction criteria.</p>
+  - All structures are converted into canonical SMILES format using RDKit.
+    - Stereochemistry is intentionally stripped to ensure standardization.
+    - The dataset includes only structures and values that were directly available in the source documents and satisfied certain extraction criteria.</p>
+</div>
 <hr />
 <h3 id="restrictions-in-sample-parsing"><strong>Restrictions in Sample Parsing</strong><a class="headerlink" href="#restrictions-in-sample-parsing" title="Permanent link">&para;</a></h3>
 <p>To ensure high-quality and consistent data extraction, the following restrictions were applied during sample parsing:</p>
