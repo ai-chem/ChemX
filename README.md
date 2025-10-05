@@ -16,7 +16,7 @@ Code for running baseline and agentic experiments is available in the [`LLM/`](.
 
 ## Citation
 
-Under review for NeurIPS 2025 Datasets and Benchmarks Track.
+Accepted for NeurIPS 2025 Datasets and Benchmarks.
 
 ### The ChemX Ecosystem
 
